@@ -37,7 +37,7 @@ module Avromatic
 
       # Schemas are registered under the full name of the top level Avro record
       # type, or `subject` if it's provided.
-      schema_id = @registry.register(subject || schema.fullname, schema)
+      schema_id = @registry.check(subject || schema.fullname, schema)["id"]
 
       stream = StringIO.new
       encoder = Avro::IO::BinaryEncoder.new(stream)
